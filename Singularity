@@ -18,12 +18,12 @@ From: singularityhub/ubuntu
 
 %post
     sed -i.bak 's/us\.archive/th\.archive/g' /etc/apt/sources.list
-    apt-get update && apt-get -y install wget git bzip2 software-properties-common
+    apt-get update && apt-get -y install wget git bzip2 software-properties-common unzip
     #https://www.linuxuprising.com/2018/04/install-oracle-java-10-in-ubuntu-or.html
     add-apt-repository ppa:linuxuprising/java
     apt update
     echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
-    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  
+    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
     apt -y install oracle-java10-installer
 
     # python 3 http://docs.python-guide.org/en/latest/starting/install3/linux/
