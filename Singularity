@@ -5,25 +5,26 @@ From: singularityhub/ubuntu
     exec echo "The runscript is the containers default runtime command!"
 
 %files
-   /home/vanessa/Desktop/hello-kitty.txt        # copied to root of container
-   /home/vanessa/Desktop/party_dinosaur.gif     /opt/the-party-dino.gif #
+   #/home/vanessa/Desktop/hello-kitty.txt        # copied to root of container
+   #/home/vanessa/Desktop/party_dinosaur.gif     /opt/the-party-dino.gif #
 
 %environment
     SPARK_HOME=/opt/hail/spark-2.2.0-bin-hadoop2.7
     HAIL_HOME=/opt/hail/hail
     PATH="$HOME/anaconda3/bin:$PATH"
-    export VARIABLE
 
 %labels
    AUTHOR bhoom.suk@mahidol.edu
 
 %post
-    apt-get update && apt-get -y install wget git bzip2
-    apt-get install software-properties-common
+    sed -i.bak 's/us\.archive/th\.archive/g' /etc/apt/sources.list
+    apt-get update && apt-get -y install wget git bzip2 software-properties-common
     #https://www.linuxuprising.com/2018/04/install-oracle-java-10-in-ubuntu-or.html
     add-apt-repository ppa:linuxuprising/java
     apt update
-    apt install -qy oracle-java10-installer
+    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  
+    apt -y install oracle-java10-installer
 
     # python 3 http://docs.python-guide.org/en/latest/starting/install3/linux/
     ##add-apt-repository ppa:deadsnakes/ppa
@@ -42,6 +43,8 @@ From: singularityhub/ubuntu
     wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -O /opt/hail/anaconda.sh
     bash ~/anaconda.sh -b -p $HOME/anaconda3
     source $HOME/anaconda3/bin/activate
+    conda env create -n hail -f $HAIL_HOME/python/hail/environment.yml
+    source activate hail
 
     # spark 2.2.0
     wget https://www.apache.org/dyn/closer.lua/spark/spark-2.2.0/spark-2.2.0-bin-hadoop2.7.tgz
