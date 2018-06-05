@@ -5,9 +5,9 @@ From: singularityhub/ubuntu
     exec echo "The runscript is the containers default runtime command!"
 
 %files
-   /vagrant/hailSrc/Anaconda3-5.2.0-Linux-x86_64.sh /opt
-   /vagrant/hailSrc/spark-2.2.0-bin-hadoop2.7.tgz /opt
-   /vagrant/hailSrc/Hail-devel-1f253167d53c-Spark-2.2.0.zip /opt
+   ../hailSrc/Anaconda3-5.2.0-Linux-x86_64.sh /opt
+   ../hailSrc/spark-2.2.0-bin-hadoop2.7.tgz /opt
+   ../hailSrc/Hail-devel-1f253167d53c-Spark-2.2.0.zip /opt
 
 %environment
     SPARK_HOME=/opt/hail/spark-2.2.0-bin-hadoop2.7
@@ -30,16 +30,16 @@ From: singularityhub/ubuntu
     # installation folder for hail
     ## mkdir -p /opt/hail/
     cd /opt
-    ## wget https://storage.googleapis.com/hail-common/distributions/devel/Hail-devel-1f253167d53c-Spark-2.2.0.zip
+    # wget https://storage.googleapis.com/hail-common/distributions/devel/Hail-devel-1f253167d53c-Spark-2.2.0.zip
     unzip Hail-devel-1f253167d53c-Spark-2.2.0.zip
 
     # spark 2.2.0
-    wget https://www.apache.org/dyn/closer.lua/spark/spark-2.2.0/spark-2.2.0-bin-hadoop2.7.tgz
+    # wget https://www.apache.org/dyn/closer.lua/spark/spark-2.2.0/spark-2.2.0-bin-hadoop2.7.tgz
     tar xvzf spark-2.2.0-bin-hadoop2.7.tgz
 
     # Anaconda3
-    wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -O /opt/hail/anaconda.sh
-    bash /opt/hail/anaconda.sh -b -p $HOME/anaconda3
+    # wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -O /opt/hail/anaconda.sh
+    bash /opt/Anaconda3-5.2.0-Linux-x86_64.sh -b -p $HOME/anaconda3
     source $HOME/anaconda3/bin/activate
     conda env create -n hail -f $HAIL_HOME/python/hail/environment.yml
     source activate hail
