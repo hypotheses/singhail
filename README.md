@@ -6,9 +6,9 @@ Singularity Container for Hail (hail.is)
 Need to get the Anaconda3, Spark, and Hail locally
 Save it to `/vagrant/hailSrc` as these will be copied to `/opt` during build
 ```
-/vagrant/hailSrc/Anaconda3-5.2.0-Linux-x86_64.sh
-/vagrant/hailSrc/spark-2.2.0-bin-hadoop2.7.tgz
-/vagrant/hailSrc/Hail-devel-1f253167d53c-Spark-2.2.0.zip
+../hailSrc/Anaconda3-5.2.0-Linux-x86_64.sh
+../hailSrc/spark-2.2.0-bin-hadoop2.7.tgz
+../hailSrc/Hail-devel-1f253167d53c-Spark-2.2.0.zip
 ```
 
 ## Build Image
