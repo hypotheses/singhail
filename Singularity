@@ -13,7 +13,7 @@ From: singularityhub/ubuntu
 %environment
     SPARK_HOME=/opt/spark-2.2.0-bin-hadoop2.7
     HAIL_HOME=/opt/hail
-    PATH="$HOME/anaconda3/bin:$PATH"
+    PATH="$HAIL_HOME/bin:$HOME/anaconda3/bin:$PATH"
 
 %labels
    AUTHOR bhoom.suk@mahidol.edu
@@ -21,12 +21,6 @@ From: singularityhub/ubuntu
 %post
     sed -i.bak 's/us\.archive/th\.archive/g' /etc/apt/sources.list
     apt-get update && apt-get -y install wget git bzip2 software-properties-common unzip
-    #https://www.linuxuprising.com/2018/04/install-oracle-java-10-in-ubuntu-or.html
-    add-apt-repository ppa:webupd8team/java
-    apt update
-    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
-    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
-    apt -y install oracle-java8-installer
 
     # installation folder for hail
     ## mkdir -p /opt/hail/
@@ -41,9 +35,17 @@ From: singularityhub/ubuntu
     # Anaconda3
     # wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -O /opt/hail/anaconda.sh
     bash /opt/Anaconda3-5.2.0-Linux-x86_64.sh -b -p $HOME/anaconda3
-    bash $HOME/anaconda3/bin/activate
-    conda env create -n hail -f $HAIL_HOME/python/hail/environment.yml
-    # source activate hail
+    . $HOME/anaconda3/bin/activate
+    conda env create -n hail -f /opt/hail/python/hail/environment.yml
+    . activate hail
+
+    #https://www.linuxuprising.com/2018/04/install-oracle-java-10-in-ubuntu-or.html
+    add-apt-repository ppa:webupd8team/java
+    apt update
+    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+    apt -y install oracle-java8-installer
+
 
     ## probably done?
     mkdir /data
