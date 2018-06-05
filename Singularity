@@ -3,6 +3,7 @@ From: singularityhub/ubuntu
 
 %runscript
     exec echo "The runscript is the containers default runtime command!"
+    exec source activate hail
 
 %files
    ../hailSrc/Anaconda3-5.2.0-Linux-x86_64.sh /opt
@@ -10,8 +11,8 @@ From: singularityhub/ubuntu
    ../hailSrc/Hail-devel-1f253167d53c-Spark-2.2.0.zip /opt
 
 %environment
-    SPARK_HOME=/opt/hail/spark-2.2.0-bin-hadoop2.7
-    HAIL_HOME=/opt/hail/hail
+    SPARK_HOME=/opt/spark-2.2.0-bin-hadoop2.7
+    HAIL_HOME=/opt/hail
     PATH="$HOME/anaconda3/bin:$PATH"
 
 %labels
@@ -40,9 +41,9 @@ From: singularityhub/ubuntu
     # Anaconda3
     # wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -O /opt/hail/anaconda.sh
     bash /opt/Anaconda3-5.2.0-Linux-x86_64.sh -b -p $HOME/anaconda3
-    source $HOME/anaconda3/bin/activate
+    bash $HOME/anaconda3/bin/activate
     conda env create -n hail -f $HAIL_HOME/python/hail/environment.yml
-    source activate hail
+    # source activate hail
 
     ## probably done?
     mkdir /data
