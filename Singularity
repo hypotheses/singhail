@@ -55,7 +55,7 @@ From: singularityhub/ubuntu
     . activate hail
     ln -s /root/anaconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
     sh /etc/profile.d/conda.sh
-    conda activate
+    echo "conda activate" >> $HOME/.bashrc
 
     ## Clean-up
     mkdir /data
