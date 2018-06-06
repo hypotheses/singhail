@@ -3,7 +3,7 @@ From: singularityhub/ubuntu
 
 %runscript
     exec echo "The runscript is the containers default runtime command!"
-    exec source activate hail
+    exec . $HOME/anaconda3/bin/activate && conda activate hail
 
 %files
    ../hailSrc/Anaconda3-5.2.0-Linux-x86_64.sh /opt
@@ -37,7 +37,7 @@ From: singularityhub/ubuntu
     bash /opt/Anaconda3-5.2.0-Linux-x86_64.sh -b -p $HOME/anaconda3
     . $HOME/anaconda3/bin/activate
     conda env create -n hail -f /opt/hail/python/hail/environment.yml
-    . activate hail
+    # . activate hail
 
     #https://www.linuxuprising.com/2018/04/install-oracle-java-10-in-ubuntu-or.html
     add-apt-repository ppa:webupd8team/java
@@ -47,6 +47,9 @@ From: singularityhub/ubuntu
     apt -y install oracle-java8-installer
 
 
-    ## probably done?
+    ## Clean-up
     mkdir /data
     echo "The post section is where you can install, and configure your container."
+    rm /opt/Anaconda3-5.2.0-Linux-x86_64.sh /opt/spark-2.2.0-bin-hadoop2.7.tgz /opt/Hail-devel-1f253167d53c-Spark-2.2.0.zip
+    apt-get autoremove 
+
