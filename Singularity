@@ -13,7 +13,7 @@ From: singularityhub/ubuntu
 %environment
     SPARK_HOME=/opt/spark-2.2.0-bin-hadoop2.7
     HAIL_HOME=/opt/hail
-    PATH="$HAIL_HOME/bin:$PATH:$HOME/anaconda3/bin"
+    PATH="$HAIL_HOME/bin:$PATH"
 
 %labels
    AUTHOR bhoom.suk@mahidol.edu
@@ -53,6 +53,8 @@ From: singularityhub/ubuntu
     . $HOME/anaconda3/bin/activate
     conda env create -n hail -f $HAIL_HOME/python/hail/environment.yml
     . activate hail
+    ln -s /root/anaconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+    conda activate
 
     ## Clean-up
     mkdir /data
