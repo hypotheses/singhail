@@ -13,7 +13,7 @@ From: singularityhub/ubuntu
 %environment
     SPARK_HOME=/opt/spark-2.2.0-bin-hadoop2.7
     HAIL_HOME=/opt/hail
-    PATH="$HAIL_HOME/bin:$PATH"
+    PATH="$HAIL_HOME/bin:$PATH:$HOME/anaconda3/bin"
 
 %labels
    AUTHOR bhoom.suk@mahidol.edu
