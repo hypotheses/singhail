@@ -54,8 +54,8 @@ From: singularityhub/ubuntu
     conda env create -n hail -f $HAIL_HOME/python/hail/environment.yml
     . activate hail
     ln -s /root/anaconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
-    sh /etc/profile.d/conda.sh
-    echo "conda activate" >> $HOME/.bashrc
+    # sh /etc/profile.d/conda.sh
+    echo "conda activate" >> /etc/skel/.bashrc
 
     ## Clean-up
     mkdir /data
