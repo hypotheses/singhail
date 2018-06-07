@@ -19,10 +19,16 @@ From: singularityhub/ubuntu
    AUTHOR bhoom.suk@mahidol.edu
 
 %post
+    # set environment
     SPARK_HOME=/opt/spark-2.2.0-bin-hadoop2.7
     HAIL_HOME=/opt/hail
     PATH="$HAIL_HOME/bin:$PATH"
     export SPARK_HOME HAIL_HOME PATH
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    locale-gen en_US.UTF-8
+    dpkg-reconfigure locales
     
     sed -i.bak 's/us\.archive/th\.archive/g' /etc/apt/sources.list
     apt-get update && apt-get -y install wget git bzip2 software-properties-common unzip
