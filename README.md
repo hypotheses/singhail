@@ -11,11 +11,12 @@ Singularity Container for Hail (hail.is)
 - clone the github to `pwd` using `git clone https://github.com/hypotheses/singhail.git`
 
 Your folder structure might look like these
+```
 `pwd`
    |--hailSrc: {source code for the required programs}
    |
    |--hailsing: {Singularity singhail git}
-
+```
 
 ## Build Image
 In vagrant virtual machine build an image using this command
