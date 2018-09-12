@@ -64,6 +64,6 @@ From: singularityhub/ubuntu
     ## Clean-up
     mkdir /data
     echo "The post section is where you can install, and configure your container."
-    rm /opt/Anaconda3-5.2.0-Linux-x86_64.sh /opt/spark-2.2.0-bin-hadoop2.7.tgz /opt/Hail-devel-1f253167d53c-Spark-2.2.0.zip
+    rm /opt/Anaconda3-5.2.0-Linux-x86_64.sh /opt/spark-2.2.2-bin-hadoop2.7.tgz /opt/Hail-devel-1f253167d53c-Spark-2.2.0.zip
     apt-get autoremove && apt-get clean
 
