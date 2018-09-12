@@ -7,7 +7,7 @@ From: singularityhub/ubuntu
 
 %files
    ../hailSrc/Anaconda3-5.2.0-Linux-x86_64.sh /opt
-   ../hailSrc/spark-2.1.3-bin-hadoop2.7.tgz /opt
+   ../hailSrc/spark-2.2.2-bin-hadoop2.7.tgz /opt
    ../hailSrc/Hail-devel-1f253167d53c-Spark-2.2.0.zip /opt
 
 %environment
@@ -39,8 +39,8 @@ From: singularityhub/ubuntu
     unzip Hail-devel-1f253167d53c-Spark-2.2.0.zip
 
     # spark 2.2.0
-    # wget http://www-eu.apache.org/dist/spark/spark-2.1.3/spark-2.1.3-bin-hadoop2.7.tgz
-    tar xvzf spark-2.1.3-bin-hadoop2.7.tgz
+    # wget http://www-eu.apache.org/dist/spark/spark-2.2.2/spark-2.2.2-bin-hadoop2.7.tgz
+    tar xvzf spark-2.2.2-bin-hadoop2.7.tgz
 
     # Anaconda3
     # wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -O /opt/hail/anaconda.sh
