@@ -11,7 +11,7 @@ From: singularityhub/ubuntu
    ../hailSrc/Hail-devel-1f253167d53c-Spark-2.2.0.zip /opt
 
 %environment
-    SPARK_HOME=/opt/spark-2.2.0-bin-hadoop2.7
+    SPARK_HOME=/opt/spark-2.2.2-bin-hadoop2.7
     HAIL_HOME=/opt/hail
     PATH="$HAIL_HOME/bin:$PATH"
 
@@ -44,7 +44,7 @@ From: singularityhub/ubuntu
 
     # Anaconda3
     # wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -O /opt/hail/anaconda.sh
-    bash /opt/Anaconda3-5.2.0-Linux-x86_64.sh -b -p $HOME/anaconda3
+    bash /opt/Anaconda3-5.2.0-Linux-x86_64.sh -b -p /opt/anaconda3
 
     # Install Oracle Java8
     # ref: https://www.linuxuprising.com/2018/04/install-oracle-java-10-in-ubuntu-or.html
@@ -55,14 +55,14 @@ From: singularityhub/ubuntu
     apt -y install oracle-java8-installer
 
     ## create conda for hail environment
-    . $HOME/anaconda3/bin/activate
+    . /opt/anaconda3/bin/activate
     conda env create -n hail -f $HAIL_HOME/python/hail/environment.yml
     . activate hail
     ln -s /root/anaconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
     echo "conda activate hail" >> /etc/skel/.bashrc
 
     ## Clean-up
-    mkdir /data
+    mkdir /mnt/data
     echo "The post section is where you can install, and configure your container."
     rm /opt/Anaconda3-5.2.0-Linux-x86_64.sh /opt/spark-2.2.2-bin-hadoop2.7.tgz /opt/Hail-devel-1f253167d53c-Spark-2.2.0.zip
     apt-get autoremove && apt-get clean
