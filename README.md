@@ -1,7 +1,7 @@
 # Singuliarity Container for Hail
-* This project is supported by Research University Network grant "Precision Cancer Medicine" *
-* Integrative Database & Analytics Platform for Cancer Precision Medicine *
-* Maintain by: Bhoom Suktitipat, MD, PhD *
+* This project is supported by Research University Network grant "Precision Cancer Medicine" 
+* Integrative Database & Analytics Platform for Cancer Precision Medicine 
+* Maintain by: Bhoom Suktitipat, MD, PhD 
 -------------------------------------------------------------------------------------------------
 
 ## Overview
