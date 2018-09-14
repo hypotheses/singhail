@@ -3,7 +3,7 @@ From: singularityhub/ubuntu
 
 %runscript
     exec echo "The runscript is the containers default runtime command!"
-    exec . $HOME/anaconda3/bin/activate && conda activate hail
+    exec . /opt/anaconda3/bin/activate && conda activate hail
 
 %files
    ../hailSrc/Anaconda3-5.2.0-Linux-x86_64.sh /opt
@@ -22,7 +22,7 @@ From: singularityhub/ubuntu
     # set environment
     SPARK_HOME=/opt/spark-2.2.0-bin-hadoop2.7
     HAIL_HOME=/opt/hail
-    PATH="$HAIL_HOME/bin:$PATH"
+    PATH="/opt/anaconda3/bin:$HAIL_HOME/bin:$PATH"
     export SPARK_HOME HAIL_HOME PATH
     export LANGUAGE=en_US.UTF-8
     export LANG=en_US.UTF-8
@@ -58,7 +58,7 @@ From: singularityhub/ubuntu
     . /opt/anaconda3/bin/activate
     conda env create -n hail -f $HAIL_HOME/python/hail/environment.yml
     . activate hail
-    ln -s /root/anaconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+    ln -s /opt/anaconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
     echo "conda activate hail" >> /etc/skel/.bashrc
 
     ## Clean-up
